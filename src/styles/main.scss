@@ -1,6 +1,3 @@
-@import "reset";
-// ресет как то криво импортируется, что ли...
-
 $day-size: 100px;
 $margin: 1px;
 $day-color: #eee;
@@ -52,7 +49,8 @@ html {
   flex-wrap: wrap;
   width: ($day-size+$margin)*7;
   gap: $margin;
-
+  
+  margin-top: 30px;
 }
 
 .calendar div:first-child {
