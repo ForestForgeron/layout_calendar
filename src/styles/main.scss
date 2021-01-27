@@ -13,44 +13,13 @@ html {
   font-family: $ff-main, sans-serif;
 }
 
-@mixin day {
-  width: $day-size;
-  height: $day-size;
-  
-  background-color: $day-color;
-  font-family: $ff-main;
-  font-size: $fs-main;
-
-  border: $day-border;
-
-  transition: 0.5s ease;
-
-  &:hover {
-    background-color: pink;
-    transform: translateY(-20px);
-    cursor: pointer;
-  }
-
-}
-
-@mixin day-content {
-  
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  display: block;
-  font-size: $fs-main;
-  line-height: $day-size;
-
-}
-
 .calendar {
   display: flex;
   flex-wrap: wrap;
   width: ($day-size+$margin)*7;
   gap: $margin;
-  
   margin-top: 30px;
+
 }
 
 .calendar div:first-child {
@@ -60,14 +29,34 @@ html {
 @for $i from 1 through 31 {
   .calendar div:nth-child(#{$i})::after {
     content: "#{$i}";
-    @include day-content;
-    display: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    font-size: $fs-main;
+    line-height: $day-size;
   }
 }
 
 @for $i from 1 through 31 {
   .calendar-#{$i} div:nth-child(-n+#{$i}) {
-    @include day;
+    width: $day-size;
+    height: $day-size;
+    
+    background-color: $day-color;
+    font-family: $ff-main;
+    font-size: $fs-main;
+
+    border: $day-border;
+
+    transition: 0.5s ease;
+
+    &:hover {
+      background-color: pink;
+      transform: translateY(-20px);
+      cursor: pointer;
+    }
+
     &::after {
       display: block;
     }
