@@ -22,6 +22,34 @@ html {
 
 }
 
+.calendar div {
+  width: $day-size;
+  height: $day-size;
+  
+  background-color: $day-color;
+  font-family: $ff-main;
+  font-size: $fs-main;
+
+  border: $day-border;
+
+  transition: 0.5s ease;
+
+  &:hover {
+    background-color: pink;
+    transform: translateY(-20px);
+    cursor: pointer;
+  }
+
+  &:after {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: $fs-main;
+    line-height: $day-size;
+    display: block;
+  }
+}
+
 .calendar div:first-child {
   margin-left: ($day-size + $margin) * 2;
 }
@@ -29,33 +57,12 @@ html {
 @for $i from 1 through 31 {
   .calendar div:nth-child(#{$i})::after {
     content: "#{$i}";
-    width: 100%;
-    height: 100%;
-    display: block;
-    text-align: center;
-    font-size: $fs-main;
-    line-height: $day-size;
   }
 }
 
 @for $i from 1 through 31 {
   .calendar-#{$i} div:nth-child(-n+#{$i}) {
-    width: $day-size;
-    height: $day-size;
-    
-    background-color: $day-color;
-    font-family: $ff-main;
-    font-size: $fs-main;
-
-    border: $day-border;
-
-    transition: 0.5s ease;
-
-    &:hover {
-      background-color: pink;
-      transform: translateY(-20px);
-      cursor: pointer;
-    }
+    display: block;
 
     &::after {
       display: block;
